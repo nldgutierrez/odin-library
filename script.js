@@ -45,24 +45,41 @@ form.addEventListener('submit', (event) => {
 
 function displayBook() {
     table.innerHTML = '';
-    for (let i = 0; i < library.length; i++) {
-        const row = document.createElement('tr');
+    
+    // Display books
+
+    library.forEach((book, index) => {
+        const bookRow = document.createElement('tr');
+        const row = table.appendChild(bookRow);
         const cellNum = document.createElement('td');
         const cellTitle = document.createElement('td');
         const cellAuthor = document.createElement('td');
         const cellPages = document.createElement('td');
         const cellRead = document.createElement('td');
 
-        cellNum.textContent = i+1;
-        cellTitle.textContent = library[i].title;
-        cellAuthor.textContent = library[i].author;
-        cellPages.textContent = library[i].pages;
-        cellRead.textContent = library[i].read;
+        cellNum.textContent = index+1;
+        cellTitle.textContent = book.title;
+        cellAuthor.textContent = book.author;
+        cellPages.textContent = book.pages;
+        cellRead.textContent = book.read;
 
-        table.appendChild(row).appendChild(cellNum);
-        table.appendChild(row).appendChild(cellTitle);
-        table.appendChild(row).appendChild(cellAuthor);
-        table.appendChild(row).appendChild(cellPages);
-        table.appendChild(row).appendChild(cellRead);
-    }
+        row.appendChild(cellNum);
+        row.appendChild(cellTitle);
+        row.appendChild(cellAuthor);
+        row.appendChild(cellPages);
+        row.appendChild(cellRead);
+
+        // Remove button
+        const cellRemove = document.createElement('td');
+        const remove = document.createElement('button');
+
+        remove.textContent = 'Remove';
+        row.appendChild(cellRemove).appendChild(remove);
+
+        // Remove a book from the array and display
+        remove.addEventListener('click', () => {
+            library.splice(index, 1);
+            displayBook();
+        });
+    });
 }
