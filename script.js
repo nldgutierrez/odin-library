@@ -30,7 +30,7 @@ const closeForm = document.querySelector('#closeForm');
 // Save user's input from the form
 
 form.addEventListener('submit', (event) => {
-    // event.preventDefault();
+    event.preventDefault();
 
     // Get the user input values
 
@@ -42,6 +42,9 @@ form.addEventListener('submit', (event) => {
     addBookToLibrary(title, author, pages, read);
     
     displayBook();
+
+    form.reset();
+    dialog.close();
 });
 
 // Add Book to Table
