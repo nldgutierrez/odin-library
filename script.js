@@ -23,7 +23,8 @@ function addBookToLibrary(title, author, pages, read) {
 const form = document.querySelector('#newBook');
 const table = document.querySelector('table');
 const tbody = document.querySelector('tbody');
-const showForm = document.querySelector('#showForm');
+const showFormEmpty = document.querySelector('#empty');
+const showFormFilled = document.querySelector('#filled');
 const dialog = document.querySelector('#dialog')
 const closeForm = document.querySelector('#closeForm');
 const empty = document.querySelector('#empty-state');
@@ -54,9 +55,11 @@ function displayBook() {
     if (library.length > 0) {
         table.style.removeProperty('display');
         empty.style.display = 'none';
+        showFormFilled.style.removeProperty('display');
     } else {
         table.style.display = 'none';
         empty.style.removeProperty('display');
+        showFormFilled.style.display = 'none';
     }
 
     tbody.innerHTML = '';
@@ -129,9 +132,13 @@ function displayBook() {
 }
 
 // Dialog Form
-showForm.addEventListener('click', () => {
+showFormEmpty.addEventListener('click', () => {
     dialog.showModal();
 });
+
+showFormFilled.addEventListener('click', () => {
+    dialog.showModal();
+})
 
 closeForm.addEventListener('click', (event) => {
     event.preventDefault();
