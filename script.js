@@ -26,6 +26,7 @@ const tbody = document.querySelector('tbody');
 const showForm = document.querySelector('#showForm');
 const dialog = document.querySelector('#dialog')
 const closeForm = document.querySelector('#closeForm');
+const empty = document.querySelector('#empty-state');
 
 
 // Save user's input from the form
@@ -48,10 +49,15 @@ form.addEventListener('submit', (event) => {
 
 // Add Book to Table
 function displayBook() {
+
     // Show table when there is a book in the library
     if (library.length > 0) {
         table.style.removeProperty('display');
-    } else table.style.display = 'none';
+        empty.style.display = 'none';
+    } else {
+        table.style.display = 'none';
+        empty.style.removeProperty('display');
+    }
 
     tbody.innerHTML = '';
     
