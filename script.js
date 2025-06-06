@@ -21,7 +21,8 @@ function addBookToLibrary(title, author, pages, read) {
 
 // DOM Selects
 const form = document.querySelector('#newBook');
-const table = document.querySelector('tbody');
+const table = document.querySelector('table');
+const tbody = document.querySelector('tbody');
 const showForm = document.querySelector('#showForm');
 const dialog = document.querySelector('#dialog')
 const closeForm = document.querySelector('#closeForm');
@@ -47,12 +48,17 @@ form.addEventListener('submit', (event) => {
 
 // Add Book to Table
 function displayBook() {
-    table.innerHTML = '';
+    // Show table when there is a book in the library
+    if (library.length > 0) {
+        table.style.removeProperty('display');
+    } else table.style.display = 'none';
+
+    tbody.innerHTML = '';
     
     // Display books
     library.forEach((book, index) => {
         const bookRow = document.createElement('tr');
-        const row = table.appendChild(bookRow);
+        const row = tbody.appendChild(bookRow);
         const cellNum = document.createElement('td');
         const cellTitle = document.createElement('td');
         const cellAuthor = document.createElement('td');
