@@ -21,10 +21,10 @@ function addBookToLibrary(title, author, pages, read) {
 
 // DOM Selects
 const form = document.querySelector('#newBook');
-const table = document.querySelector('table');
+const table = document.querySelector('.table-container');
 const tbody = document.querySelector('tbody');
 const showFormEmpty = document.querySelector('#empty');
-const showFormFilled = document.querySelector('#filled');
+const showFormFilled = document.querySelector('#table-button');
 const dialog = document.querySelector('#dialog')
 const closeForm = document.querySelector('#closeForm');
 const empty = document.querySelector('#empty-state');
