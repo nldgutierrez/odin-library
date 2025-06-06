@@ -28,12 +28,10 @@ const closeForm = document.querySelector('#closeForm');
 
 
 // Save user's input from the form
-
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     // Get the user input values
-
     const title = form.title.value;
     const author = form.author.value;
     const pages = form.pages.value;
@@ -48,12 +46,10 @@ form.addEventListener('submit', (event) => {
 });
 
 // Add Book to Table
-
 function displayBook() {
     table.innerHTML = '';
     
     // Display books
-
     library.forEach((book, index) => {
         const bookRow = document.createElement('tr');
         const row = table.appendChild(bookRow);
