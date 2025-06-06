@@ -22,12 +22,15 @@ function addBookToLibrary(title, author, pages, read) {
 // DOM Selects
 const form = document.querySelector('#newBook');
 const table = document.querySelector('tbody');
+const showForm = document.querySelector('#showForm');
+const dialog = document.querySelector('#dialog')
+const closeForm = document.querySelector('#closeForm');
 
 
 // Save user's input from the form
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     // Get the user input values
 
@@ -113,3 +116,13 @@ function displayBook() {
         });
     });
 }
+
+// Dialog Form
+showForm.addEventListener('click', () => {
+    dialog.showModal();
+});
+
+closeForm.addEventListener('click', (event) => {
+    event.preventDefault();
+    dialog.close();
+})
