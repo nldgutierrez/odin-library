@@ -1,8 +1,9 @@
 /* Colors */
 
 :root {
-    --black: #373a3e;
-    --gray: #51565D;
+    --black: #2B2E31;
+    --dark: #373a3e;
+    --gray: #4F5359;
     --main-color: #bff1f2;
     --accent-01: #49cac5;
 
@@ -12,13 +13,15 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    color: unset;
 }
 
 /* Layout */
 
 body {
     height: 100vh;
-    background-color: var(--black);
+    background-color: var(--dark);
+    color: var(--dark);
 }
 
 .container {
@@ -53,6 +56,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    color: var(--main-color);
 }
 
 svg {
@@ -76,6 +80,29 @@ svg {
 
 .header, .footer {
     text-align: center;
+}
+
+.header {
+    background-color: var(--black);
+    padding: 16px;
+    color: var(--accent-01);
+}
+
+.footer {
+    color: var(--dark);
+    background-color: var(--accent-01);
+    padding: 8px;
+    font-size: 0.8rem;
+}
+
+a:link {
+    color: unset;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+#heart {
+    color: var(--main-color);
 }
 
 /* Table */
@@ -125,12 +152,10 @@ thead {
 
 thead th:first-child {
     border-top-left-radius: 8px;
-    /* border-bottom-left-radius: 8px; */
 }
 
 thead th:last-child {
     border-top-right-radius: 8px;
-    /* border-bottom-right-radius: 8px; */
 }
 
 td, th {
@@ -165,23 +190,24 @@ tr:not(:last-child) {
 }
 
 button {
+    color: var(--dark);
     cursor: pointer;
     font-size: unset;
     font-family: unset;
 }
 
 button:hover {
-    color: var(--black);
-    border-color: var(--black);
+    color: var(--dark);
+    border-color: var(--dark);
 }
 
-#filled {
+#filled, #empty {
     background-color: var(--accent-01);
     border: none;
     border-radius: 8px;
     padding: 8px 16px;
 }
 
-#filled:hover {
+#filled:hover, #empty:hover {
     color: var(--main-color);
 }
