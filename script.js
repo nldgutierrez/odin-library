@@ -24,11 +24,11 @@ const form = document.querySelector('#newBook');
 const table = document.querySelector('.table-container');
 const tbody = document.querySelector('tbody');
 const showFormEmpty = document.querySelector('#empty');
-const showFormFilled = document.querySelector('#table-button');
+const showFormFilled = document.querySelector('#filled');
+const tableButton = document.querySelector('#table-button')
 const dialog = document.querySelector('#dialog')
 const closeForm = document.querySelector('#closeForm');
 const empty = document.querySelector('#empty-state');
-
 
 // Save user's input from the form
 form.addEventListener('submit', (event) => {
@@ -55,11 +55,11 @@ function displayBook() {
     if (library.length > 0) {
         table.style.removeProperty('display');
         empty.style.display = 'none';
-        showFormFilled.style.removeProperty('display');
+        tableButton.style.removeProperty('display');
     } else {
         table.style.display = 'none';
         empty.style.removeProperty('display');
-        showFormFilled.style.display = 'none';
+        tableButton.style.display = 'none';
     }
 
     tbody.innerHTML = '';
@@ -80,9 +80,23 @@ function displayBook() {
         cellPages.textContent = book.pages;
         
         if (book.read === true) {
-            cellRead.innerHTML = `<span id="status">Read</span>`;
+            const span = document.createElement('span');
+            cellRead.appendChild(span);
+            span.textContent = 'Read';
+            span.style.border = '2px solid';
+            span.style.borderRadius = '4px';
+            span.style.padding = '2px 8px';
+            span.style.backgroundColor = '#D4EDBC'
+            span.style.color = '#13734B'
         } else {
-            cellRead.innerHTML = `<span id="status">Unread</span>`;
+            const span = document.createElement('span');
+            cellRead.appendChild(span);
+            span.textContent = 'Unread';
+            span.style.border = '2px solid';
+            span.style.borderRadius = '4px';
+            span.style.padding = '2px 8px';
+            span.style.backgroundColor = '#FFCFC9'
+            span.style.color = '#B10202'
         }
 
         row.appendChild(cellNum);
@@ -94,6 +108,7 @@ function displayBook() {
         // Mark as Read button
         const cellMark = document.createElement('td');
         const mark = document.createElement('button');
+        mark.classList.add('mark');
 
         if (book.read === true) {
             mark.textContent = 'Mark as unread';
@@ -119,8 +134,9 @@ function displayBook() {
         // Remove button
         const cellRemove = document.createElement('td');
         const remove = document.createElement('button');
+        remove.classList.add('remove')
 
-        remove.textContent = 'Remove';
+        remove.innerHTML = `&times;`;
         row.appendChild(cellRemove).appendChild(remove);
 
         // Remove a book from the array and display
@@ -138,9 +154,9 @@ showFormEmpty.addEventListener('click', () => {
 
 showFormFilled.addEventListener('click', () => {
     dialog.showModal();
-})
+});
 
 closeForm.addEventListener('click', (event) => {
     event.preventDefault();
     dialog.close();
-})
+});

@@ -1,11 +1,24 @@
+/* Colors */
+
+:root {
+    --black: #373a3e;
+    --gray: #51565D;
+    --main-color: #bff1f2;
+    --accent-01: #49cac5;
+
+    font-family: 'Figtree', sans-serif, system-ui;
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
-    border: 1px dotted;
 }
+
+/* Layout */
 
 body {
     height: 100vh;
+    background-color: var(--black);
 }
 
 .container {
@@ -24,6 +37,7 @@ body {
 
 .main > div {
     width: 90%;
+    overflow-x: scroll;
 }
 
 .table-container {
@@ -31,6 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-x: scroll;
 }
 
 #empty-state {
@@ -54,8 +69,119 @@ svg {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: sticky;
+    bottom: 0;
+    left: 0;
 }
 
 .header, .footer {
     text-align: center;
+}
+
+/* Table */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: center;
+
+    background-color: var(--main-color);
+    border-radius: 8px;
+}
+
+.table-number {
+    width: 5ch;
+}
+
+.table-title, .table-author {
+    width: clamp(30ch, 20vw, 60ch);
+}
+
+.table-pages, .table-status {
+    width: 15ch;
+}
+
+.table-actions {
+    width: 15ch;
+}
+
+.table-remove {
+    width: 5ch;
+}
+
+td:nth-child(2),
+td:nth-child(3),
+th:nth-child(2),
+th:nth-child(3) {
+    text-align: left;
+}
+
+thead {
+    background-color: var(--accent-01);
+    position: sticky;
+    top: 0;
+}
+
+thead th:first-child {
+    border-top-left-radius: 8px;
+    /* border-bottom-left-radius: 8px; */
+}
+
+thead th:last-child {
+    border-top-right-radius: 8px;
+    /* border-bottom-right-radius: 8px; */
+}
+
+td, th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+tr:not(:last-child) {
+    border-bottom: 1px dashed var(--accent-01);
+}
+
+.remove {
+    border-radius: 50%;
+    border: 2px solid gray;
+    color: gray;
+    background-color: transparent;
+    padding: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mark {
+    background-color: transparent;
+    border: 2px solid gray;
+    color: gray;
+    border-radius: 4px;
+    padding: 2px 8px;
+}
+
+button {
+    cursor: pointer;
+    font-size: unset;
+    font-family: unset;
+}
+
+button:hover {
+    color: var(--black);
+    border-color: var(--black);
+}
+
+#filled {
+    background-color: var(--accent-01);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+#filled:hover {
+    color: var(--main-color);
 }
